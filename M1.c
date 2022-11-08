@@ -86,7 +86,8 @@ void drawrecur(struct procnode *p, uint32_t depth, bool bshowPID) {
 int main(int argc, char *argv[]) {
   char kind = '0';
   if (argc == 2) {
-    kind = argv[1][1]; // 先假设输入参数格式都是对的
+    if ((kind = getopt(argc, argv, "Vnp")) == -1)
+	    exit(0);
   }
 
   for (int i = 0; i < argc; i++) {
